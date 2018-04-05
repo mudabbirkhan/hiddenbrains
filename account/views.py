@@ -8,6 +8,7 @@ from rest_framework import permissions
 from django.views.generic import View, TemplateView
 from .models import User
 from django.contrib.auth import logout
+from rest_framework.authentication import TokenAuthentication
 
 
 class LoginAPI(APIView):
@@ -38,6 +39,7 @@ class RegisterAPI(APIView):
 
 
 class ChangePasswordAPI(APIView):
+    authentication_classes = TokenAuthentication,
     permission_classes = permissions.IsAuthenticated,
     serializer_class = ChangePasswordSerialzer
 

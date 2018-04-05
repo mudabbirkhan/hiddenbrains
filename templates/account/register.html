@@ -1,0 +1,43 @@
+{% extends 'account/base.html' %}
+{%block title %}Signup Form {% endblock %}
+
+{%block main%}
+	<div class="main main-agileits">
+		<h1>Signup Form</h1>
+		<div class="main-agilerow">
+			<div class="signup-wthreetop">
+				<h2>Welcome to Registration</h2>
+				<p>Fill in the details below</p>
+				{% if error %}
+					<p style="color:blue; font-size:25px;">{{error}}</p>
+				{% endif %}
+			</div>
+			<div class="contact-wthree">
+				<form action="{% url 'register' %}" method="post">
+					{% csrf_token %}
+					<h3>Step 1 :</h3>
+					<div class="form-w3step1">
+						<input type="text" name="name" placeholder="Your Name" required="">
+						<input type="email" class="email agileits-btm" name="email" placeholder="Email" required="">
+					</div>
+					<h3>Step 2 :</h3>
+					<div class="form-w3step1">
+						<input type="text" name="username" placeholder="User Name" required="">
+						<input type="password" name="password" placeholder="Password" required="">
+						<!--<input type="password" class="agileits-btm" name="confirm password" placeholder="Confirm Password" required="">-->
+					</div>
+					<h3>Step 3 :</h3>
+					<div class="form-w3step1 w3ls-formrow">
+						<input type="text" name="mob_number" placeholder="Mobile number" required="">
+						<input type="text" class="agileits-btm" name="address" placeholder="Your Address" required="">
+					</div>
+					<!--<div class="agileits-row2 w3ls-formrow2">-->
+						<!--<input type="checkbox" id="brand2" value="">-->
+						<!--<label for="brand2"><span></span>I accept the terms of Use</label>-->
+					<!--</div>-->
+					<input type="submit" value="SUBMIT">
+				</form>
+			</div>
+		</div>
+	</div>
+{% endblock %}

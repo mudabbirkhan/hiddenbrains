@@ -1,0 +1,30 @@
+{% extends 'account/base.html' %}
+{%block title %}Login{% endblock %}
+
+{%block main%}
+	<div class="main main-agileits">
+		<h1>Signup Form</h1>
+		<div class="main-agilerow">
+			<div class="signup-wthreetop">
+				<h2>Welcome to Registration</h2>
+				<p>Please Fill The Form</p>
+				{% if error %}
+					<p style="color:blue; font-size:25px;">{{error}}</p>
+				{% endif %}
+			</div>
+			<div class="contact-wthree">
+				<form action="{% url 'login' %}" method="post">
+					{% csrf_token %}
+					<div class="form-w3step1">
+						<input type="text" name="username" placeholder="User Name" required="">
+					</div>
+
+					<div class="form-w3step1">
+						<input type="password" name="password" placeholder="Password" required="">
+					</div>
+					<input type="submit" value="SUBMIT">
+				</form>
+			</div>
+		</div>
+	</div>
+{% endblock %}

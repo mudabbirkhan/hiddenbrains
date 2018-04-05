@@ -1,0 +1,31 @@
+
+{% extends 'account/base.html' %}
+{%block title %}Index Page {% endblock %}
+
+{%block main%}
+	<div class="main main-agileits">
+		<h1>Index Page</h1>
+		<div class="main-agilerow">
+			<div class="signup-wthreetop">
+				<h2>Welcome to Index Page</h2>
+                {% if msg %}
+					<p style="color:blue; font-size:25px;">{{msg}}</p>
+				{% endif %}
+				<p>Click below links to Login or Register</p>
+			</div>
+			<div class="contact-wthree">
+                <div class="form-w3step1">
+                        <ul>
+                            <li><a href="{% url 'login' %}">Login</a></li>
+                        </ul>
+                </div>
+                <div class="form-w3step1 w3ls-formrow">
+                    <ul>
+                        <li><a href="{% url 'register' %}">Register</a></li>
+                    </ul>
+                </div>
+
+			</div>
+		</div>
+	</div>
+{% endblock %}

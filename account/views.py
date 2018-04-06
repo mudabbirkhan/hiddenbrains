@@ -9,6 +9,8 @@ from django.views.generic import View, TemplateView
 from .models import User
 from django.contrib.auth import logout
 from rest_framework.authentication import TokenAuthentication
+from .tasks import send_register_email
+from django.contrib import messages
 
 
 class LoginAPI(APIView):
@@ -105,6 +107,8 @@ class RegisterView(View):
             user.set_password(password)
             user.save()
             login(request, user)
+            send_register_email.delay()
+            messages.success(request, 'We are sending an email for registration..')
             return render(request, 'account/dashboard.html', context={'user': user})
         else:
             return render(request, 'account/register.html', context={'error': 'Error while Registering'})

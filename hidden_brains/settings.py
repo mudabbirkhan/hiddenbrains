@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'djcelery',
     'account',
     'rest_framework',
     'rest_framework.authtoken',
@@ -138,3 +139,13 @@ STATICFILES_DIRS = [
 STATIC_URL = '/static/'
 
 LOGOUT_REDIRECT_URL = 'account/'
+
+CELERY_BROKER_URL = 'amqp://localhost'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = 1025
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
+EMAIL_USE_TLS = False
+
